@@ -74,6 +74,10 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control.
 	 */
 	@Override
+	public void teleopInit(){
+		new io();
+	}
+	@Override
 	public void teleopPeriodic() {
 	}
 
