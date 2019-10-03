@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team6189.robot;
 
+import org.usfirst.frc.team6189.robot.Subsystems.RobotDrive;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,6 +23,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	private static final String kDefaultAuto = "Default";
 	private static final String kCustomAuto = "My Auto";
+	public static RobotDrive drive;
+	public static io IO;
 	private String m_autoSelected;
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
 
@@ -34,18 +38,6 @@ public class Robot extends IterativeRobot {
 		m_chooser.addObject("My Auto", kCustomAuto);
 		SmartDashboard.putData("Auto choices", m_chooser);
 	}
-
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString line to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional comparisons to
-	 * the switch structure below with additional strings. If using the
-	 * SendableChooser make sure to add them to the chooser code above as well.
-	 */
 	@Override
 	public void autonomousInit() {
 		m_autoSelected = m_chooser.getSelected();
@@ -69,13 +61,12 @@ public class Robot extends IterativeRobot {
 				break;
 		}
 	}
-
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopInit(){
-		new io();
+		//these variables are only used during the teleop period, so they are initialized here
+		IO = new io();
+		drive = new RobotDrive();
+		
 	}
 	@Override
 	public void teleopPeriodic() {
