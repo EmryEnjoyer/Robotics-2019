@@ -24,10 +24,9 @@ public class Robot extends IterativeRobot {
 	private static final String kDefaultAuto = "Default";
 	private static final String kCustomAuto = "My Auto";
 	public static RobotDrive drive;
-	public static io IO;
 	private String m_autoSelected;
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
-
+	// Access ( restrictore: Static Final) Type (string, int, float
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -37,7 +36,11 @@ public class Robot extends IterativeRobot {
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
 		SmartDashboard.putData("Auto choices", m_chooser);
+		drive = new RobotDrive();
 	}
+	/*
+	 * Initializers: tell the robot what to do when the period starts 
+	 * */
 	@Override
 	public void autonomousInit() {
 		m_autoSelected = m_chooser.getSelected();
@@ -51,31 +54,23 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		switch (m_autoSelected) {
-			case kCustomAuto:
-				// Put custom auto code here
-				break;
-			case kDefaultAuto:
-			default:
-				// Put default auto code here
-				break;
-		}
+		teleopPeriodic();
 	}
 	@Override
 	public void teleopInit(){
-		//these variables are only used during the teleop period, so they are initialized here
-		IO = new io();
-		drive = new RobotDrive();
+		//runs autmotaically when teleop starts
 		
 	}
 	@Override
 	public void teleopPeriodic() {
+		io.Check();
 	}
-
-	/**
-	 * This function is called periodically during test mode.
+	/*
+	 * @annotation
+	 * Access Restrictor (static) Type Name(){
+	 *  variable += 1
+	 * 
+	 * }
+	 *
 	 */
-	@Override
-	public void testPeriodic() {
-	}
 }

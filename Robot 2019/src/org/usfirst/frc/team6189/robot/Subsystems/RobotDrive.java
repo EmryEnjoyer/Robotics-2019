@@ -15,8 +15,7 @@ public class RobotDrive extends Subsystem{
 	PWMVictorSPX[] Drive = new PWMVictorSPX[] 
 			{new PWMVictorSPX(RobotMap.LeftDriveFront), 
 			new PWMVictorSPX(RobotMap.LeftDriveBack),
-			new PWMVictorSPX(RobotMap.RightDriveFront),
-			new PWMVictorSPX(RobotMap.RightDriveBack)};
+			new PWMVictorSPX(RobotMap.RightDrive)};
 	@Override
 	public void initDefaultCommand() {
 		setDefaultCommand(new Drive(this));
@@ -24,9 +23,9 @@ public class RobotDrive extends Subsystem{
 	//Making a default drive like last year (I don't really like this method, but it works)
 	public void Drive(double LeftDrive, double RightDrive) {
 		
-		Drive[0].set(LeftDrive);
-		Drive[1].set(LeftDrive);
-		Drive[2].set(RightDrive);
-		Drive[3].set(RightDrive);
+		Drive[0].set(RightDrive);
+		Drive[1].set(RightDrive);
+		Drive[2].set(LeftDrive);
+		
 	}
 }

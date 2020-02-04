@@ -10,10 +10,9 @@ public class RobotMap {
 	 * Final declares the dynamic status (it's not)
 	 * int declares that this will be an integer
 	 * */
-	public static final int RightDriveFront = 0;
-	public static final int RightDriveBack = 1;
-	public static final int LeftDriveFront = 2;
-	public static final int LeftDriveBack = 3;
+	public static final int LeftDriveFront = 9;
+	public static final int LeftDriveBack = 8;
+	public static final int RightDrive = 7;
 	public static final int ArmPitch = 4;
 	public static final int PneumaticSystem = 5;
 }
